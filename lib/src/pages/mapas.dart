@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:scannerqr/src/block/scans_bloc.dart';
 import 'package:scannerqr/src/models/scan_model.dart';
-import 'package:scannerqr/src/providers/db_provider.dart';
 import 'package:scannerqr/src/utils/utils.dart';
 
 class MapasPage extends StatelessWidget {
@@ -12,6 +11,7 @@ class MapasPage extends StatelessWidget {
     return StreamBuilder<List<ScanModel>>(
       stream: scanBloc.scanStream,
       builder: (BuildContext context, AsyncSnapshot<List<ScanModel>> snapshot) {
+        
         if (!snapshot.hasData) {
           return (Center(child: CircularProgressIndicator()));
         }

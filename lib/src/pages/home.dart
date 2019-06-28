@@ -46,24 +46,18 @@ class _HomePageState extends State<HomePage> {
   _scannQR( BuildContext context) async{
     String futureString = 'https://reclamosgt.unitypromotores.com';
 
-   /* try{
+    try{
        futureString = await new QRCodeReader().scan();
     }catch(e){
       futureString = e.toString();
     }
 
-     print('futurestring: $futureString');
-
-    if(futureString != null){
-      print('Tenemos Informacion');
-    }*/
-
      if(futureString != null){
        final registro = ScanModel(valor: futureString);
        scanBloc.agregar(registro); 
 
-        final registro2 = ScanModel(valor: 'geo:40.78923438432,-732434893438');
-       scanBloc.agregar(registro2);
+       //final registro2 = ScanModel(valor: 'geo:40.78923438432,-732434893438');
+       //scanBloc.agregar(registro2);
 
        if(Platform.isIOS){
           Future.delayed(Duration(milliseconds: 750),(){
