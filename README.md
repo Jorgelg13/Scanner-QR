@@ -3,6 +3,8 @@
 A new Flutter project.
 
 ## Getting Started
+Esta aplicacion sirve para escanear codigos QR,
+los datos escaneados se guardan en la base de datos SQLite del dispositivo
 
 This project is a starting point for a Flutter application.
 
