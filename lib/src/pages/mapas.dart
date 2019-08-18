@@ -5,9 +5,11 @@ import 'package:scannerqr/src/models/scan_model.dart';
 import 'package:scannerqr/src/utils/utils.dart';
 
 class MapasPage extends StatelessWidget {
+    final scanBloc = new ScansBloc();
+
   @override
   Widget build(BuildContext context) {
-    final scanBloc = new ScansBloc();
+    scanBloc.listar();
     return StreamBuilder<List<ScanModel>>(
       stream: scanBloc.scanStream,
       builder: (BuildContext context, AsyncSnapshot<List<ScanModel>> snapshot) {

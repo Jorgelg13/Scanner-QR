@@ -1,8 +1,9 @@
 import 'dart:async';
+import 'package:scannerqr/src/block/validator.dart';
 import 'package:scannerqr/src/models/scan_model.dart';
 import 'package:scannerqr/src/providers/db_provider.dart';
 
-class ScansBloc{
+class ScansBloc with Validators{
   static final ScansBloc _singleton= new ScansBloc._internal();
 
   //sirve para retornar una unica instancia de la clase
@@ -19,8 +20,8 @@ class ScansBloc{
   //el brodcast sirve para referir que en varios lugares se estara escuchando
   final _scansController = StreamController<List<ScanModel>>.broadcast();
 
-  Stream <List<ScanModel>> get scanStream => _scansController.stream;
-
+  Stream <List<ScanModel>> get scanStream     => _scansController.stream.transform(validarGeo);
+  Stream <List<ScanModel>> get scanStreamHttp => _scansController.stream.transform(validarHttp);
   dispose(){
     _scansController?.close();
   }
